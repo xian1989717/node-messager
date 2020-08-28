@@ -1,10 +1,7 @@
 const express = require('express')
-
+const { getIndex } = require('./service')
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  console.log('123')
-  res.send()
-})
+router.get('/', getIndex)
 
 module.exports = router

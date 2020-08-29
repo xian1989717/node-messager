@@ -1,7 +1,12 @@
 const express = require('express')
-const { getIndex } = require('./service')
+const {
+  getIndex,
+  getOne
+} = require('./service')
 const router = express.Router()
 
-router.get('/', getIndex)
+router
+  .get('/', getIndex)
+  .get('/getOne', getOne)
 
 module.exports = router

@@ -19,7 +19,8 @@
     <thead>
       <tr>
         <th scope="col">序号</th>
-        <th scope="col">名称</th>
+        <th scope="col">姓名</th>
+        <th scope="col">性别</th>
         <th scope="col">年龄</th>
         <th scope="col">爱好</th>
         <th scope="col">图片</th>
@@ -27,46 +28,21 @@
       </tr>
     </thead>
     <tbody>
+      {{each list}}
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>18</td>
-        <td>看书</td>
+        <th scope="row">{{$value.Mno}}</th>
+        <td>{{$value.Mname}}</td>
+        <td>{{$value.Msex}}</td>
+        <td>{{$value.Mage}}</td>
+        <td>{{$value.Mhobby}}</td>
         <td><img style="width:50px;height:50px;" src="./imgs/s1.png" /></td>
-        <td><a>修改</a><a>删除</a></td>
+        <td>
+          <a href='/getOne?id={{$value.Mno}}'>查看</a>
+          <a>修改</a>
+          <a>删除</a>
+        </td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>20</td>
-        <td>洗澡</td>
-        <td></td>
-        <td><a>修改</a><a>删除</a></td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>21</td>
-        <td>捉娃娃</td>
-        <td></td>
-        <td><a>修改</a><a>删除</a></td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>Larry</td>
-        <td>30</td>
-        <td>打地鼠</td>
-        <td></td>
-        <td><a>修改</a><a>删除</a></td>
-      </tr>
-      <tr>
-        <th scope="row">5</th>
-        <td>Larry</td>
-        <td>29</td>
-        <td>吹牛</td>
-        <td></td>
-        <td><a>修改</a><a>删除</a></td>
-      </tr>
+      {{/each}}
     </tbody>
   </table>
 </body>

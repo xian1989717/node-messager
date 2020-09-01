@@ -12,7 +12,12 @@ module.exports = {
   },
   getOne (req, res) {
     const query = req.query
-    const sql = 'select * from node_messager where id= ' + query.id
-    res.render('detail.html')
+    const sql = 'select * from node_messager where Mno= ' + query.id
+    connection.query(sql, (err, data) => {
+      const _data = {
+        list: data 
+      }
+      res.render('detail.html', _data)
+    })
   }
 }

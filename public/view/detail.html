@@ -5,31 +5,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
 </head>
 
-<body style="margin:16px;">
-  <form>
-    <div class="form-group">
-      <label for="name">姓名</label>
-      <input type="text" class="form-control" id="name">
-    </div>
-    <div class="form-group">
-      <label for="name">姓名</label>
-      <select class="form-control">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-    </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Check me out</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+<body>
+  <h1>详细信息</h1>
+  {{each list}}
+  <div>
+    <span>序号</span>
+    <span>{{$value.Mno}}</span>
+  </div>
+  <div>
+    <span>名称</span>
+    <span>{{$value.Mname}}</span>
+  </div>
+  <div>
+    <span>性别</span>
+    <span>{{$value.Msex}}</span>
+  </div>
+  <div>
+    <span>年龄</span>
+    <span>{{$value.Mage}}</span>
+  </div>
+  <div>
+    <span>爱好</span>
+    <span>{{$value.Mhobby}}</span>
+  </div>
+  {{/each}}
 </body>
 
 </html>

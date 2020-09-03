@@ -35,14 +35,20 @@ module.exports = {
     })
   },
   editDetail (req, res) {
-    const form = new formidable.IncomingForm()
-    form.parse(req, function (err, fields, files) {
-      if (err) return res.redirect(303, '/error')
-      let response = {
-        fields,
-        files
-      }
-      res.send(response)
+    // const form = new formidable.IncomingForm()
+    // form.parse(req, function (err, fields, files) {
+    //   if (err) return res.redirect(303, '/error') 
+    //   let response = {
+    //     fields,
+    //     files
+    //   }
+    //   res.send(response)
+    // })
+    req.on('data'()=> {
+
+    })
+    req.on('end', () => {
+
     })
   }
 }

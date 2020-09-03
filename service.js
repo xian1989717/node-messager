@@ -1,4 +1,5 @@
 const { connection } = require('./mysql.config')
+const formidable = require("formidable")
 
 module.exports = {
   getIndex (req, res) {
@@ -31,6 +32,17 @@ module.exports = {
         list: data
       }
       res.render('edit.html', _data)
+    })
+  },
+  editDetail (req, res) {
+    const form = new formidable.IncomingForm()
+    form.parse(req, function (err, fields, files) {
+      if (err) return res.redirect(303, '/error')
+      let response = {
+        fields,
+        files
+      }
+      res.send(response)
     })
   }
 }

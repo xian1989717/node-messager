@@ -10,26 +10,25 @@
 
 <body style="margin:16px;">
   <h1>编辑详情</h1>
-  <form action="editDetail" method="post" enctype="www-form-urlencoded">
-    {{each list}}
+  <form action="editDetail?id={{data[0].Mno}}" method="post" enctype="www-form-urlencoded">
     <div class="form-group">
       <label for="name">姓名</label>
-      <input type="text" class="form-control" id="name" name="Mname" value="{{$value.Mname}}">
+      <input type="text" class="form-control" id="name" name="Mname" value="{{data[0].Mname}}">
     </div>
     <div class="form-group">
       <label for="gender">性别</label>
-      <select class="form-control" id="gender" name="Msex" selected="{{$value.Msex}}">
+      <select class="form-control" id="gender" name="Msex" selected="{{data[0].Msex}}">
         <option>男</option>
         <option>女</option>
       </select>
     </div>
     <div class="form-group">
       <label for="age">年龄</label>
-      <input type="number" class="form-control" id="age" name="Mage" value="{{$value.Mage}}" />
+      <input type="number" class="form-control" id="age" name="Mage" value="{{data[0].Mage}}" />
     </div>
     <div class="form-group">
       <label for="hobby">爱好</label>
-      <input type="textarea" class="form-control" id="hobby" name="Mhobby" value="{{$value.Mhobby}}" />
+      <input type="textarea" class="form-control" id="hobby" name="Mhobby" value="{{data[0].Mhobby}}" />
     </div>
     <div class="form-group">
       <label for="img">图片</label>
@@ -38,7 +37,6 @@
     <button type="submit" class="btn btn-primary">
       Submit
     </button>
-    {{/each}}
   </form>
 </body>
 

@@ -28,27 +28,20 @@ module.exports = {
       if (err) {
         res.send('error')
       }
-      const _data = {
-        list: data
-      }
-      res.render('edit.html', _data)
+      res.render('edit.html', { data })
     })
   },
   editDetail (req, res) {
-    // const form = new formidable.IncomingForm()
-    // form.parse(req, function (err, fields, files) {
-    //   if (err) return res.redirect(303, '/error') 
-    //   let response = {
-    //     fields,
-    //     files
-    //   }
-    //   res.send(response)
-    // })
-    req.on('data'()=> {
-
-    })
-    req.on('end', () => {
-
+    const query = req.query
+    const form = new formidable.IncomingForm()
+    form.parse(req, (err, fields, files) => {
+      if (err) return res.redirect(303, '/error')
+      const { Mname, Msex, Mage, Mhobby } = fields
+      const sql = `UPDATE node_messager SET Mname = '${Mname}', Msex = '${Msex}', Mage = ${Mage}, Mhobby = '${Mhobby}',is_removed = 0 WHERE Mno = ${query.id}`
+      connection.query(sql, (err, data) => {
+        console.log(data)
+        res.send('true')
+      })
     })
   }
 }

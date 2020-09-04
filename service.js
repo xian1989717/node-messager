@@ -3,7 +3,17 @@ const formidable = require("formidable")
 
 module.exports = {
   getIndex (req, res) {
-    const sql = 'select * from node_messager'
+    const sql = `
+      select 
+        Mno,
+        Mname,
+        Msex,
+        Mage,
+        Mhobby 
+      from 
+        node_messager 
+      where 
+        is_removed = 0`
     connection.query(sql, (err, data) => {
       const _data = {
         list: data
@@ -19,6 +29,25 @@ module.exports = {
         list: data
       }
       res.render('detail.html', _data)
+    })
+  },
+  deleteOne (req, res) {
+    const query = req.query
+    const sql = `
+      update
+        node_messager
+      set 
+        is_removed = 1
+      where
+        Mno = ${query.id}
+    `
+    connection.query(sql, (err, data) => {
+      if (err) {
+        res.send('error')
+      }
+      if (data.changedRows) {
+        res.send('<script>alert("删除成功");window.location.href="/"</script>')
+      }
     })
   },
   getEditOne (req, res) {

@@ -3,7 +3,8 @@ const {
   getIndex,
   getOne,
   getEditOne,
-  editDetail
+  editDetail,
+  deleteOne
 } = require('./service')
 
 const router = express.Router()
@@ -13,5 +14,6 @@ router
   .get('/getOne', getOne)
   .get('/editOne', getEditOne)
   .post('/editDetail', editDetail)
+  .get('/deleteOne', deleteOne)
 
 module.exports = router

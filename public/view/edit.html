@@ -10,7 +10,7 @@
 
 <body style="margin:16px;">
   <h1>编辑详情</h1>
-  <form action="editDetail?id={{data[0].Mno}}" method="post" enctype="www-form-urlencoded">
+  <form action="editDetail?id={{data[0].Mno}}" method="post" enctype="multipart/form-data">
     <div class="form-group">
       <label for="name">姓名</label>
       <input type="text" class="form-control" id="name" name="Mname" value="{{data[0].Mname}}">
@@ -32,10 +32,10 @@
     </div>
     <div class="form-group">
       <label for="img">图片</label>
-      <input type="file" class="form-control-file" id="img">
+      <input type="file" class="form-control-file" name="img" id="img">
     </div>
     <button type="submit" class="btn btn-primary">
-      Submit
+      提交
     </button>
   </form>
 </body>

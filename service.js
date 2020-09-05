@@ -1,3 +1,4 @@
+const fs = require('fs')
 const { connection } = require('./mysql.config')
 const formidable = require("formidable")
 
@@ -66,21 +67,25 @@ module.exports = {
     form.parse(req, (err, fields, files) => {
       if (err) return res.redirect(303, '/error')
       const { Mname, Msex, Mage, Mhobby } = fields
-      const sql = `UPDATE 
-            node_messager 
-          SET 
-            Mname = '${Mname}', 
-            Msex = '${Msex}', 
-            Mage = ${Mage}, 
-            Mhobby = '${Mhobby}',
-            is_removed = 0 
-          WHERE 
-            Mno = ${query.id}`
-      connection.query(sql, (err, data) => {
+      fs.rename(files.img.path, './public/imgs/' + files.img.name, (err) => {
         if (err) { return }
-        if (data.changedRows) {
-          res.send('<script>alert("保存成功");window.location.href="/"</script>')
-        }
+        const sql = `UPDATE 
+                      node_messager 
+                    SET 
+                      Mname = '${Mname}', 
+                      Msex = '${Msex}', 
+                      Mage = ${Mage}, 
+                      Mhobby = '${Mhobby}',
+                      Ming = 'imgs/${files.img.name}'
+                      is_removed = 0 
+                    WHERE 
+                      Mno = ${query.id}`
+        connection.query(sql, (err, data) => {
+          if (err) { return }
+          if (data.changedRows) {
+            res.send('<script>alert("保存成功");window.location.href="/"</script>')
+          }
+        })
       })
     })
   }

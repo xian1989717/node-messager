@@ -10,7 +10,8 @@ module.exports = {
         Mname,
         Msex,
         Mage,
-        Mhobby 
+        Mhobby,
+        Mimg 
       from 
         node_messager 
       where 
@@ -64,6 +65,7 @@ module.exports = {
   editDetail (req, res) {
     const query = req.query
     const form = new formidable.IncomingForm()
+    form.uploadDir = 'public/imgs/';
     form.parse(req, (err, fields, files) => {
       if (err) return res.redirect(303, '/error')
       const { Mname, Msex, Mage, Mhobby } = fields
@@ -76,7 +78,7 @@ module.exports = {
                       Msex = '${Msex}', 
                       Mage = ${Mage}, 
                       Mhobby = '${Mhobby}',
-                      Ming = 'imgs/${files.img.name}'
+                      Mimg = 'imgs/${files.img.name}',
                       is_removed = 0 
                     WHERE 
                       Mno = ${query.id}`

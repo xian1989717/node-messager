@@ -25,7 +25,18 @@ module.exports = {
   },
   getOne (req, res) {
     const query = req.query
-    const sql = 'select * from node_messager where Mno= ' + query.id
+    const sql = `
+      select
+        Mno,
+        Mname,
+        Msex,
+        Mage,
+        Mhobby,
+        Mimg
+      from 
+        node_messager 
+      where 
+        Mno=  + ${query.id}`
     connection.query(sql, (err, data) => {
       const _data = {
         list: data
@@ -90,5 +101,9 @@ module.exports = {
         })
       })
     })
+  },
+  add (req, res) {
+    // res.send('<script>window.location.href ="./public/view/add.html"</script>')
+    res.render('add.html', {})
   }
 }

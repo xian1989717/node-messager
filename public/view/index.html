@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+  <script src="../lib/jquery.min.js"></script>
 </head>
 
 </head>
@@ -13,7 +14,7 @@
 <body style="padding:16px;">
   <h1 style="margin-bottom:16px;">员工管理系统</h1>
   <div style="margin-bottom:16px;">
-    <button type="button" class="btn btn-primary">添加</button>
+    <button type="button" class="btn btn-primary" id="add">添加</button>
   </div>
   <table class="table">
     <thead>
@@ -46,5 +47,22 @@
     </tbody>
   </table>
 </body>
+
+<script>
+  const id = document.getElementById('add')
+  id.onclick = function () {
+    $.ajax({
+      type: "get",
+      url: "/add",
+      success: function (result) {
+        console.log(result);
+      },
+      error: function (e) {
+        console.log(e.status);
+        console.log(e.responseText);
+      }
+    })
+  }
+</script>
 
 </html>

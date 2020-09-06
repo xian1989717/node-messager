@@ -4,7 +4,8 @@ const {
   getOne,
   getEditOne,
   editDetail,
-  deleteOne
+  deleteOne,
+  add
 } = require('./service')
 
 const router = express.Router()
@@ -15,5 +16,6 @@ router
   .get('/editOne', getEditOne)
   .post('/editDetail', editDetail)
   .get('/deleteOne', deleteOne)
+  .get('/add', add)
 
 module.exports = router

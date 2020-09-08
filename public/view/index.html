@@ -48,21 +48,4 @@
   </table>
 </body>
 
-<script>
-  const id = document.getElementById('add')
-  id.onclick = function () {
-    $.ajax({
-      type: "get",
-      url: "/add",
-      success: function (result) {
-        console.log(result);
-      },
-      error: function (e) {
-        console.log(e.status);
-        console.log(e.responseText);
-      }
-    })
-  }
-</script>
-
 </html>

@@ -76,7 +76,7 @@ module.exports = {
   editDetail (req, res) {
     const query = req.query
     const form = new formidable.IncomingForm()
-    form.uploadDir = 'public/imgs/';
+    form.uploadDir = 'public/imgs/'
     form.parse(req, (err, fields, files) => {
       if (err) return res.redirect(303, '/error')
       const { Mname, Msex, Mage, Mhobby } = fields
